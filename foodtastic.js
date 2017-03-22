@@ -202,7 +202,6 @@ function searchRecommend(){
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					console.log(xhr.responseText);
-					console.log("wassup");
 					var newResp = JSON.parse(xhr.responseText);
 					var recipes = newResp.recipes;
 					for (var i = 0; i < 11; i++) {
