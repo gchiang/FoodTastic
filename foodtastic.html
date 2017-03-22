@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<title>FoodTastic</title> 
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+
+
+</head>
+
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+img{
+
+width: 100%
+
+}
+
+h1 { 
+
+font-family: 'Pacifico';
+
+text-align: center;
+
+
+}
+p1 {
+	font-family: 'Pacifico';
+	text-align: center;
+}
+
+header {
+
+height: 700px
+
+
+}
+
+#demo{
+
+color:white;
+
+font-size: 25px;
+
+font-family: "Georgia";
+
+text-align: center;
+
+}
+
+#demo1{
+
+color:white;
+
+font-size: 25px;
+
+font-family: "Georgia";
+
+text-align: center;
+
+
+}
+
+.home{
+
+top: 2px;
+
+left: 2px;
+
+position:absolute;
+
+height:50px;
+
+width:55px
+
+}
+
+.add1{
+
+right: 20px;
+
+position:absolute;
+
+height:50px;
+
+width:55px;
+
+}
+
+ul{
+
+    list-style-type: none;
+
+}
+
+b{
+
+color:white;
+
+font-size: 15px;
+
+font-family: "Georgia";
+
+text-align: center;
+
+}
+
+button{
+height:10px;
+}
+
+
+
+
+
+</style>
+
+<body>
+
+<!-- Start of first page: #one -->
+
+<div data-role="page" id="one">
+
+
+
+
+<div data-role="header">
+
+<h1>FoodTastyc</h1>
+
+</div><!-- /header -->
+
+
+
+
+<div data-role="content" >
+
+<h2></h2>
+
+<h3></h3>
+
+<img src="file:///C:/Users/GWC/Downloads/half-empty-fridge-23965876%20photoshop.jpg" alt="Fridge" width="500" height="500"  align="middle" >
+
+<p><a href="#two" data-role="button">My Fridge</a></p>
+
+<p><a href="#four" data-role="button">My Cookbook</a></p>
+
+<p><a href="#three" data-role="button" onclick= "searchRecommend()">Recommended Recipes</a></p>
+
+<p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop">Search</a></p>
+
+</div><!-- /content --> 
+
+
+<div data-role="footer" data-theme="d">
+
+
+</div><!-- /footer -->
+
+</div><!-- /page one -->
+
+
+
+
+
+
+
+<!-- Start of second page: #two -->
+
+<div data-role="page" id="two" data-theme="a">
+
+<div data-role="header">
+
+
+</div><!-- /header -->
+
+<body>
+
+<div data-role="content" data-theme="a">
+
+<div class= "home">
+
+<a href="#one" data-direction="reverse" data-role="button" data-theme="b"><img src="file:\\\C:\Users\gwc\Documents\Final Project\black-left-arrow-hi.png"></a>
+
+</div>
+
+<h1>My Fridge</h1>
+
+</div><!-- /content -->
+
+<div id="about" class="hidden">
+
+<div class="form">
+
+Add food to your fridge:<br>
+
+<input type="text" id="food">
+
+<br>
+
+</p>
+
+<p>What's in your fridge:</p>
+
+
+
+<ul type="a" id="demo"></ul>
+
+<input type="button" value="Add to fridge" onclick= "addItems()" id= "userinput"/>
+
+</div> 
+
+</div>
+
+<div data-role="footer">
+
+<b> Click on the food to remove from your fridge</b>
+
+</div><!-- /footer -->
+
+</div><!-- /page two -->
+
+</body>
+
+
+
+
+<div data-role="page" id="four" data-theme="a">
+
+
+
+
+<div data-role="header">
+
+
+
+</div><!-- /header -->
+
+<h1>
+My Cookbook
+</h1>
+<b>Add up to 10 recipes</b>
+
+<body  onload="getRecipes()">
+<div class= "home">
+
+<a href="#one" data-direction="reverse" data-role="button" data-theme="b"><img src="file:\\\C:\Users\gwc\Documents\Final Project\black-left-arrow-hi.png"></a>
+
+</div>
+
+<br>
+
+<br>
+
+<div id="result"></div>
+<p id="recipe0"></p><a id = "delete0" onclick="del(0)">Delete</a>
+<a id = "web0"><img id="img0"/></a>
+<p id="recipe1"></p><a id = "delete1" onclick="del(1)">Delete</a>
+<a id = "web1"><img id="img1"/></a>
+<p id="recipe2"></p><a id = "delete2" onclick="del(2)">Delete</a>
+<a id = "web2"><img id="img2"/></a>
+<p id="recipe3"></p><a id = "delete3" onclick="del(3)">Delete</a>
+<a id = "web3"><img id="img3"/></a>
+<p id="recipe4"></p><a id = "delete4" onclick="del(4)">Delete</a>
+<a id = "web4"><img id="img4"/></a>
+<p id="recipe5"></p><a id = "delete5" onclick="del(5)">Delete</a>
+<a id = "web5"><img id="img5"/></a>
+<p id="recipe6"></p><a id = "delete6" onclick="del(6)">Delete</a>
+<a id = "web6"><img id="img6"/></a>
+<p id="recipe7"></p><a id = "delete7" onclick="del(7)">Delete</a>
+<a id = "web7"><img id="img7"/></a>
+<p id="recipe8"></p><a id = "delete8" onclick="del(8)">Delete</a>
+<a id = "web8"><img id="img8"/></a>
+<p id="recipe9"></p><a id = "delete9" onclick="del(9)">Delete</a>
+<a id = "web9"><img id="img9"/></a>
+
+
+<div data-role="footer">
+
+
+</div><!-- /footer -->
+
+</div><!-- /page two -->
+
+
+
+
+<div data-role="page" id="three" data-theme="a">
+
+<div data-role="header">
+
+
+</div><!-- /header -->
+
+
+
+
+<div data-role="content" data-theme="a">
+
+<div class= "home">
+
+<a href="#one" data-direction="reverse" data-role="button" data-theme="b"><img src="file:\\\C:\Users\gwc\Documents\Final Project\black-left-arrow-hi.png"></a>
+
+</div>
+
+<h1>Recommended Recipes</h1>
+
+
+<p></p>
+
+<div class= "add2">
+<input type="button" onclick="addRecipe1(0)" value='Add to Cookbook'/>
+</p>
+</div>
+
+
+<p id="Li0"></p>
+<a id = "Link0"><img id="Limg0"/ >
+<ul type="a" id="demo"></ul></a>
+
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(1)" value='Add to Cookbook'/>
+
+</div>
+
+<div id="result"></div>
+
+<p id="Li1"></p>
+<a id = "Link1"><img id="Limg1"/ ></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(2)" value='Add to Cookbook'/>
+
+</div>
+<p id="Li2"></p>
+<a id = "Link2"><img id="Limg2"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(3)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="Li3"></p>
+<a id = "Link3"><img id="Limg3"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(4)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="Li4"></p>
+<a id = "Link4"><img id="Limg4"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(5)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="Li5"></p>
+<a id = "Link5"><img id="Limg5"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(6)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="Li6"></p>
+<a id = "Link6"><img id="Limg6"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(7)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="Li7"></p>
+<a id = "Link7"><img id="Limg7"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(8)" value='Add to Cookbook'/>
+</div>
+
+<p id="Li8"></p>
+<a id = "Link8"><img id="Limg8"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(9)" value='Add to Cookbook'/>
+</div>
+
+<p id="Li9"></p>
+<a id = "Link9"><img id="Limg9"/></a>
+<div class= "add2">
+
+<input type="button" onclick="addRecipe1(10)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="Li10"></p>
+<a id = "Link10"><img id="Limg10"/></a>
+
+</div>
+</div><!-- /content -->
+
+
+<div data-role="footer">
+
+
+</div><!-- /footer -->
+
+</div><!-- /page two -->
+
+
+
+
+
+
+
+<!-- Start of third page: #popup -->
+
+<div data-role="page" id="popup">
+
+
+
+
+<div data-role="header" data-theme="e">
+
+</div><!-- /header -->
+
+
+
+
+<div data-role="content" data-theme="d">
+
+<h2>Search for Recipes</h2>
+
+<div class="container">
+
+<form class="searchbox">
+
+<input type="search" placeholder="Search......" name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+
+<p><a href="#five" data-role="button" type="submit" class="searchbox-submit" onclick= "searchRecipe();" > GO </a></p>
+
+<span class="searchbox-icon"></span>
+
+</form>
+
+</div>
+
+<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to Home</a></p>
+
+</div><!-- /content -->
+
+
+<div data-role="footer">
+
+
+</div><!-- /footer -->
+
+</div><!-- /page popup -->
+
+<div data-role="page" id="five" data-theme="a" >
+
+
+
+
+<div data-role="header">
+
+</div><!-- /header -->
+
+
+
+<div data-role="content" data-theme="a">
+
+<div class= "home">
+
+</div>
+
+<h1>Search Results</h1>
+<p1> click the image to see the recipe</p1>
+<div class= "add1">
+<input type="button" onclick="addRecipe(0)" value='Add to Cookbook'/>
+</p>
+</div>
+
+<div id="result"></div>
+
+<p id="li0"></p>
+<a id = "link0"><img id="limg0"/ >
+<ul type="a" id="demo"></ul></a>
+
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(1)" value='Add to Cookbook'/>
+
+</div>
+
+<div id="result"></div>
+
+<p id="li1"></p>
+<a id = "link1"><img id="limg1"/ ></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(2)" value='Add to Cookbook'/>
+
+</div>
+<p id="li2"></p>
+<a id = "link2"><img id="limg2"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(3)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="li3"></p>
+<a id = "link3"><img id="limg3"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(4)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="li4"></p>
+<a id = "link4"><img id="limg4"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(5)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="li5"></p>
+<a id = "link5"><img id="limg5"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(6)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="li6"></p>
+<a id = "link6"><img id="limg6"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(7)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="li7"></p>
+<a id = "link7"><img id="limg7"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(8)" value='Add to Cookbook'/>
+</div>
+
+<p id="li8"></p>
+<a id = "link8"><img id="limg8"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(9)" value='Add to Cookbook'/>
+</div>
+
+<p id="li9"></p>
+<a id = "link9"><img id="limg9"/></a>
+<div class= "add1">
+
+<input type="button" onclick="addRecipe(10)" value='Add to Cookbook'/>
+
+</div>
+
+<p id="li10"></p>
+<a id = "link10"><img id="limg10"/></a>
+
+</div>
+
+<a href="#one" data-direction="reverse" data-role="button" data-theme="b">Home</a>
+
+<a href="#popup" data-direction="reverse" data-role="button" data-theme="b">Search</a>
+
+</div>
+
+</div>
+
+
+
+
+<script type="text/javascript" src="Group2JS.js"></script>
+
+</body>
+
+</html>
